@@ -3,7 +3,7 @@
 #include "stdlib.h"
 #include "stdbool.h";
 
-int randomInt(int min, int max) // Для генерации рандомного числа
+int randomInt(int min, int max) // Р”Р»СЏ РіРµРЅРµСЂР°С†РёРё СЂР°РЅРґРѕРјРЅРѕРіРѕ С‡РёСЃР»Р°
 { 
 	return rand() % (max - min + 1) + min;
 }
@@ -40,26 +40,26 @@ void getLines(char** array, int* n, char* alphabet, int* index, int* forRemove)
 }
 void removeLines(char** array, int* n, int* c, char* alphabet)
 {
-	int lineCount = 2; // Кол-во строк для удаления
+	int lineCount = 2; // РљРѕР»-РІРѕ СЃС‚СЂРѕРє РґР»СЏ СѓРґР°Р»РµРЅРёСЏ
 	int* forRemove = calloc(lineCount, sizeof(int)), index = 0;
 	void (*tamp)(char** array, int* forRemove, int* n, int* c) = tampArray;
 	getLines(array, n, alphabet, &index, forRemove);
-	for (int i = 0; i < lineCount; i++) // Удаляем 2 требуемые строки по индексу
+	for (int i = 0; i < lineCount; i++) // РЈРґР°Р»СЏРµРј 2 С‚СЂРµР±СѓРµРјС‹Рµ СЃС‚СЂРѕРєРё РїРѕ РёРЅРґРµРєСЃСѓ
 	{
 		array[forRemove[i]] = NULL;
 	}
-	tamp(array, forRemove, n, c, &lineCount); // Уплотняем массив
+	tamp(array, forRemove, n, c, &lineCount); // РЈРїР»РѕС‚РЅСЏРµРј РјР°СЃСЃРёРІ
 }
 
 int main()
 {
-	int n = 8, c = 8; // n - длина массива, c - длина строки
+	int n = 8, c = 8; // n - РґР»РёРЅР° РјР°СЃСЃРёРІР°, c - РґР»РёРЅР° СЃС‚СЂРѕРєРё
 	char** array = (char**)calloc(16, sizeof(char*));
 
 	void (*rem)(char** array, int* n, int* c, char* alphabet) = removeLines;
 	char* alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-	for (int i = 0; i < n; i++) // Выделяем область памяти для каждой строки
+	for (int i = 0; i < n; i++) // Р’С‹РґРµР»СЏРµРј РѕР±Р»Р°СЃС‚СЊ РїР°РјСЏС‚Рё РґР»СЏ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё
 	{
 		array[i] = (char*)calloc(c, sizeof(char));
 		for (int j = 0; j < c; j++)
@@ -71,10 +71,10 @@ int main()
 		printf("%s ", array[i]);
 	}
 
-	rem(array, &n, &c, alphabet); // Удаляем из массива первую и последнюю строку по алфавиту, после уплотняем
+	rem(array, &n, &c, alphabet); // РЈРґР°Р»СЏРµРј РёР· РјР°СЃСЃРёРІР° РїРµСЂРІСѓСЋ Рё РїРѕСЃР»РµРґРЅСЋСЋ СЃС‚СЂРѕРєСѓ РїРѕ Р°Р»С„Р°РІРёС‚Сѓ, РїРѕСЃР»Рµ СѓРїР»РѕС‚РЅСЏРµРј
 
 	printf("\n");
-	for (int i = 0; i < n; i++) // Вывод значения послее удаления
+	for (int i = 0; i < n; i++) // Р’С‹РІРѕРґ Р·РЅР°С‡РµРЅРёСЏ РїРѕСЃР»РµРµ СѓРґР°Р»РµРЅРёСЏ
 	{
 		printf("%s ", array[i]);
 	}
