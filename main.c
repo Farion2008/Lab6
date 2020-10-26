@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS//я ещё до конца не разобрался)
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
