@@ -7,7 +7,7 @@ int randomInt(int min, int max) // Для генерации рандомног�
 { 
 	return rand() % (max - min + 1) + min;
 }
-void tampArray(char** array, int* forRemove, int* n, int* c, int* lineCount)
+void tampArray(char** array, int* forRemove, int* n, int* c, int* lineCount) // Уплотняем массив
 {
 	int isBiggest = forRemove[0] > forRemove[1] ? forRemove[0] : forRemove[1], isSmallest = forRemove[0] < forRemove[1] ? forRemove[0] : forRemove[1];
 	for (int i = isSmallest; i < *n; i++)
@@ -18,7 +18,7 @@ void tampArray(char** array, int* forRemove, int* n, int* c, int* lineCount)
 	}
 	*n -= *lineCount;
 }
-void getLines(char** array, int* n, char* alphabet, int* index, int* forRemove)
+void getLines(char** array, int* n, char* alphabet, int* index, int* forRemove) // Получение требуемых строк по заданию
 {
 	for (int i = 0; i < *n; i++)
 	{
@@ -38,7 +38,7 @@ void getLines(char** array, int* n, char* alphabet, int* index, int* forRemove)
 		getLines(array, n, alphabet, index, forRemove);
 	}
 }
-void removeLines(char** array, int* n, int* c, char* alphabet)
+void removeLines(char** array, int* n, int* c, char* alphabet) // Удаляем из массива первую и последнюю строку по алфавиту, после уплотняем
 {
 	int lineCount = 2; // Кол-во строк для удаления
 	int* forRemove = calloc(lineCount, sizeof(int)), index = 0;
